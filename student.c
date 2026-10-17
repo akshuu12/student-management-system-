@@ -6,14 +6,16 @@ struct Student
     float Marks;
     char n[100];
 };
+struct Student add(struct Student);
+void disp(struct Student);
+struct Student search(struct Student,int);
 int main(){
-    struct Student add(struct Student);
-    void disp(struct Student);
     struct Student A[100];
-    int ch,k=1,n=0,i;
+    int ch,k=1,n=0,i,num,x;
+    struct Student S;
     printf("==========Student Management System===========");
     while(k){
-        printf("\n1.Add Student\n2.Display All Student\n3.Exit\nEnter Your Choice : ");
+        printf("\n1.Add Student\n2.Display All Student\n3.Search\n4.Exit\nEnter Your Choice : ");
         scanf("%d",&ch);
         switch(ch){
             case 1:
@@ -33,10 +35,19 @@ int main(){
                     else{
                         for(i=0;i<n;i++){
                             disp(A[i]);
+                         }
                     }
-    }
-    break;
+                     break;
             case 3:
+                    printf("Enter roll number : ");
+                    scanf("%d",&num);
+                    for(i=0;i<n;i++){
+                        S=search(A[i],num);
+                    }
+                    printf("\nName : %s||Roll_number : %d||Class : %d||Marks : %.2f ",S.n,S.Id,S.Class,S.Marks);
+                    break;
+                
+            case 4:
                 k=0;
                 break;
             default:
@@ -59,4 +70,11 @@ struct Student add(struct Student Z){
 }
 void disp(struct Student X){
     printf("\nName : %s||Roll_number : %d||Class : %d||Marks : %.2f ",X.n,X.Id,X.Class,X.Marks);
+}
+struct Student search(struct Student Z,int n){
+    if(n!=Z.Id){
+    }
+    else{
+        return(Z);
+    }
 }
