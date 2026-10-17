@@ -11,7 +11,7 @@ void disp(struct Student);
 int search(struct Student,int);
 int main(){
     struct Student A[100];
-    int ch,k=1,n=0,i,num,x;
+    int ch,k=1,n=0,i,num,x=0;
     struct Student S;
     printf("==========Student Management System===========");
     while(k){
@@ -48,7 +48,6 @@ int main(){
                             break;
                         }
                         else{
-                            continue;
                         }
                     }
                     if(x==1){
