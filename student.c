@@ -8,7 +8,7 @@ struct Student
 };
 struct Student add(struct Student);
 void disp(struct Student);
-struct Student search(struct Student,int);
+int search(struct Student,int);
 int main(){
     struct Student A[100];
     int ch,k=1,n=0,i,num,x;
@@ -42,11 +42,24 @@ int main(){
                     printf("Enter roll number : ");
                     scanf("%d",&num);
                     for(i=0;i<n;i++){
-                        S=search(A[i],num);
+                        x=search(A[i],num);
+                        if(x==1){
+                            S=A[i];
+                            break;
+                        }
+                        else{
+                            continue;
+                        }
                     }
-                    printf("\nName : %s||Roll_number : %d||Class : %d||Marks : %.2f ",S.n,S.Id,S.Class,S.Marks);
+                    if(x==1){
+                        printf("\nName : %s||Roll_number : %d||Class : %d||Marks : %.2f ",S.n,S.Id,S.Class,S.Marks);
+                    }
+                    else{
+                        printf("Student not found!");
+                    }
                     break;
-                
+
+                    
             case 4:
                 k=0;
                 break;
@@ -71,10 +84,11 @@ struct Student add(struct Student Z){
 void disp(struct Student X){
     printf("\nName : %s||Roll_number : %d||Class : %d||Marks : %.2f ",X.n,X.Id,X.Class,X.Marks);
 }
-struct Student search(struct Student Z,int n){
+int search(struct Student Z,int n){
     if(n!=Z.Id){
+        return(0);
     }
     else{
-        return(Z);
+        return(1);
     }
 }
